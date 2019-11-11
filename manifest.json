@@ -3,7 +3,7 @@
 	"manifest_version": 2,
 
 	"name": "AWS Region Color Toolbar",
-	"description": "Change AWS header to different colors based on region",
+	"description": "Changes the color of the top nav bar, of the AWS web console, based on region for easy referencing.",
 	"version": "1",
 	"author": "Chris Slamar",
 
