@@ -1,0 +1,21 @@
+{
+
+	"manifest_version": 2,
+
+	"name": "AWS Region Color Toolbar",
+	"description": "Change AWS header to different colors based on region",
+	"version": "1",
+	"author": "Chris Slamar",
+
+	"content_scripts": [
+
+		{
+			"matches": ["https://*.aws.amazon.com/*", "https://*.amazonaws-us-gov.com/*"],
+			"js": ["regioncolor.js"],
+			"run_at": "document_end"
+		}
+
+
+	]
+
+}
