@@ -23,40 +23,17 @@ const REGIONS = {
 };
 
 //You can access the nav-regionMenu directly
-const regionMenuParent = document.getElementById('nav-regionMenu');
+const regionMenuParent = document.querySelector("[data-testid='awsc-nav-header-viewport-shelf-inner']");
 
-//Now you can access the label directly, no need for a loop
-const label = regionMenuParent.querySelector('div.nav-elt-label');
-//Pull out the region text
-const regionText = label.textContent;
+// Get region name text
+const regionText = document.querySelector("[data-testid='awsc-nav-regions-menu-button'] > span").textContent;
 
 //Check if you have that region defined
 if (REGIONS.hasOwnProperty(regionText)) {
 	//Apply the styles
 	let style = REGIONS[regionText];
-	
-    let items = document.getElementsByClassName('nav-menu')
-    changeNavColor(items, style.backgroundColor);
-
+	regionMenuParent.style.backgroundColor = style.backgroundColor
 } else {
 	//Warn the user they are missing a region
 	console.error(`AWS Region Color Changer Extension is missing the region: ${regionText}`);
-}
-
-regionMenuParent.addEventListener('click', function () {
-	document.querySelectorAll('#regionMenuContent > a').forEach(item => {
-		let menuRegionText = item.textContent.replace(/.*?\((.*?)\)/, "$1");
-		let style = REGIONS[menuRegionText];
-		if (!style) return;
-	})
-});
-
-function changeNavColor(elems, color) {
-    document.getElementById('awsgnav').style.backgroundColor = color;
-    document.getElementById('nav-menubar').style.backgroundColor = color;
-    document.getElementById('nav-menu-right').style.backgroundColor = color;
-
-    for(let i=0; i < elems.length; i++) {
-        elems[i].style["background-color"] = color;
-    }
 }
